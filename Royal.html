@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Royal Flora — Flower Bouquets | Indoor Plants | Event Decor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== VARIABLES ===== */
+:root {
+  --maroon: #86023a;
+  --maroon-d: #69032e;
+  --maroon-l: #86023a;
+  --gold: #c89b2a;
+  --gold-l: #f0c040;
+  --gold-ll: #fdeea0;
+  --gold-d: #8a6010;
+  --cream: #fdf8f0;
+  --cream2: #f5ede0;
+  --white: #ffffff;
+  --text: #2a0a10;
+  --muted: #7a4a50;
+  --border: #e8d5c0;
+  --green: #2d5a27;
+  --green-l: #4a7a44;
+}
+
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--gold);}
+section{scroll-margin-top:75px;}
+
+/* ===== PROMO BANNER ===== */
+.promo{
+  background:linear-gradient(90deg,var(--maroon-d),var(--maroon),var(--maroon-d));
+  color:var(--gold-ll);text-align:center;padding:9px 5%;
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:500;
+}
+.promo span{color:var(--gold-l);}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(253,248,240,0.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:75px;transition:all 0.4s;
+}
+nav.scrolled{
+  background:#86023a;backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(200,155,42,0.3);
+  box-shadow:0 4px 30px rgba(107,15,26,0.3);
+}
+/* Logo — left */
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo img{
+  height:56px;width:56px;object-fit:contain;border-radius:50%;
+  border:2px solid rgba(200,155,42,0.4);
+  transition:border-color 0.3s;
+}
+nav.scrolled .nav-logo img{border-color:rgba(200,155,42,0.7);}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--maroon);letter-spacing:0.02em;line-height:1.1;transition:color 0.3s;}
+.nav-logo-text small{display:block;font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-d);margin-top:1px;}
+nav.scrolled .nav-logo-text{color:var(--gold-ll);}
+nav.scrolled .nav-logo-text small{color:rgba(200,155,42,0.7);}
+/* Nav links — right */
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{
+  text-decoration:none;color:var(--text);font-size:0.78rem;
+  font-weight:500;letter-spacing:0.15em;text-transform:uppercase;
+  position:relative;padding-bottom:4px;transition:color 0.3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:1.5px;background:var(--maroon);transition:width 0.3s;
+}
+.nav-links a:hover{color:var(--maroon);}
+.nav-links a:hover::after{width:100%;}
+nav.scrolled .nav-links a{color:rgba(253,248,240,0.8);}
+nav.scrolled .nav-links a::after{background:var(--gold);}
+nav.scrolled .nav-links a:hover{color:var(--gold-ll);}
+.nav-cta{
+  background:var(--maroon);color:var(--gold-ll) !important;
+  padding:8px 22px !important;border-radius:2px;
+  transition:all 0.3s !important;font-family:'Playfair Display',serif !important;
+}
+.nav-cta::after{display:none !important;}
+.nav-cta:hover{background:var(--maroon-l) !important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(107,15,26,0.3) !important;}
+nav.scrolled .nav-cta{background:var(--gold) !important;color:var(--maroon-d) !important;}
+nav.scrolled .nav-cta:hover{background:var(--gold-l) !important;}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--maroon);transition:all 0.3s;}
+nav.scrolled .hamburger span{background:var(--gold-ll);}
+.mob-menu{
+  display:none;position:fixed;top:75px;left:0;width:100%;
+  background:rgba(107,15,26,0.98);backdrop-filter:blur(14px);
+  padding:1.8rem 5%;flex-direction:column;gap:1.2rem;z-index:999;
+  border-bottom:1px solid rgba(200,155,42,0.2);
+}
+.mob-menu.open{display:flex;}
+.mob-menu a{
+  color:var(--cream);font-size:0.9rem;font-weight:500;letter-spacing:0.15em;
+  text-transform:uppercase;padding:0.6rem 0;text-decoration:none;
+  border-bottom:1px solid rgba(200,155,42,0.1);
+}
+
+/* ===== HERO ===== */
+#home{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-slider{position:absolute;inset:0;z-index:0;}
+.hero-slide{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 1.4s ease;
+}
+.hero-slide.active{opacity:1;}
+.hero-slide::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(115deg,#86023a 50%,#69032e 50%,rgba(45,90,39,0.25) 100%);
+}
+/* Floating petals */
+.petal{
+  position:absolute;pointer-events:none;font-size:1.2rem;
+  animation:petalFall linear infinite;opacity:0;z-index:1;
+}
+@keyframes petalFall{
+  0%{transform:translateY(-5vh) rotate(0deg) scale(0);opacity:0;}
+  10%{opacity:0.7;}
+  90%{opacity:0.3;}
+  100%{transform:translateY(105vh) rotate(720deg) scale(1.2);opacity:0;}
+}
+.hero-content{
+  position:relative;z-index:2;padding:140px 5% 80px;
+  max-width:650px;animation:fadeUp 1.2s ease both;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold-ll);font-weight:500;
+  border:1px solid rgba(240,192,64,0.5);padding:6px 18px;border-radius:20px;
+  margin-bottom:1.5rem;background:rgba(200,155,42,0.12);backdrop-filter:blur(4px);
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:700;line-height:1.1;color:var(--white);
+  margin-bottom:0.5rem;
+}
+.hero-title em{color:var(--gold-ll);font-style:italic;}
+.hero-subtitle-top{
+  font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;
+  color:rgba(253,238,160,0.8);letter-spacing:0.08em;margin-bottom:1.2rem;
+}
+.hero-tagline{
+  font-size:0.82rem;color:rgba(255,255,255,0.65);
+  letter-spacing:0.2em;margin-bottom:2.5rem;font-weight:300;
+}
+.hero-tagline span{color:var(--gold-l);}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-maroon{
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-l));
+  color:var(--gold-ll);padding:14px 36px;text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  border-radius:2px;transition:all 0.35s;display:inline-block;
+  font-family:'Playfair Display',serif;
+}
+.btn-maroon:hover{transform:translateY(-3px);box-shadow:0 12px 35px #86023a;}
+.btn-gold-out{
+  border:1.5px solid rgba(240,192,64,0.7);color:var(--gold-ll);
+  padding:13px 36px;text-decoration:none;font-size:0.78rem;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;border-radius:2px;
+  transition:all 0.35s;display:inline-block;
+}
+.btn-gold-out:hover{background:rgba(200,155,42,0.15);transform:translateY(-3px);}
+/* Slider controls */
+.hero-dots{position:absolute;bottom:32px;left:5%;z-index:3;display:flex;gap:8px;align-items:center;}
+.hero-dot{width:26px;height:2px;border-radius:2px;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.4s;}
+.hero-dot.active{background:var(--gold);width:44px;}
+.hero-arr{
+  position:absolute;top:50%;z-index:3;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(253,248,240,0.12);border:1px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:white;font-size:1.1rem;backdrop-filter:blur(4px);transition:all 0.3s;
+}
+.hero-arr:hover{background:var(--maroon);border-color:var(--maroon);}
+.hero-arr.prev{left:1.5%;}
+.hero-arr.next{right:1.5%;}
+
+/* ===== SECTION SHARED ===== */
+.sec-pad{padding:100px 5%;}
+.sec-hd{text-align:center;margin-bottom:4.5rem;}
+.sec-tag{font-size:0.7rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold-d);font-weight:500;margin-bottom:0.8rem;display:block;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.2;color:var(--maroon);}
+.sec-title em{font-style:italic;color:var(--green);}
+.sec-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:1.1rem auto 1.4rem;}
+.sec-rule-line{width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.sec-rule-line.r{background:linear-gradient(90deg,var(--gold),transparent);}
+.sec-rule-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+.sec-desc{font-size:0.92rem;color:var(--muted);line-height:1.85;max-width:560px;margin:0 auto;font-weight:300;}
+
+/* ===== STATS ===== */
+.stats-bar{
+  background:linear-gradient(135deg,var(--maroon-d),var(--maroon));
+  padding:3rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;
+}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold-ll);line-height:1;}
+.stat-n sup{font-size:1.2rem;}
+.stat-l{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,238,160,0.55);margin-top:6px;}
+
+/* ===== SERVICES — with images ===== */
+#services{background:var(--cream2);padding:100px 5%;}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;}
+.svc-card{
+  background:var(--white);border-radius:6px;overflow:hidden;
+  border:1px solid var(--border);transition:all 0.4s;
+  box-shadow:0 2px 12px rgba(107,15,26,0.06);
+}
+.svc-card:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(107,15,26,0.16);}
+.svc-img{
+  width:100%;height:220px;object-fit:cover;
+  transition:transform 0.6s;display:block;
+}
+.svc-card:hover .svc-img{transform:scale(1.06);}
+.svc-img-wrap{overflow:hidden;position:relative;}
+.svc-img-wrap::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+  background:linear-gradient(transparent,rgba(107,15,26,0.3));
+}
+.svc-body{padding:1.6rem 1.5rem 1.8rem;}
+.svc-icon-row{display:flex;align-items:center;gap:10px;margin-bottom:0.7rem;}
+.svc-icon{font-size:1.5rem;}
+.svc-name{font-family:'Playfair Display',serif;font-size:1.18rem;font-weight:700;color:var(--maroon);}
+.svc-desc{font-size:0.85rem;color:var(--muted);line-height:1.78;font-weight:300;margin-bottom:1.1rem;}
+.svc-link{
+  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--maroon);font-weight:600;text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1px solid var(--maroon);padding-bottom:2px;
+  transition:all 0.3s;
+}
+.svc-link:hover{color:var(--green);border-color:var(--green);}
+.svc-link::after{content:'→';}
+
+/* ===== ABOUT ===== */
+#about{background:var(--cream);padding:100px 5%;}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;max-width:1100px;margin:0 auto;}
+.about-vis{position:relative;}
+.about-card{
+  background:linear-gradient(135deg,var(--maroon-d),var(--maroon));
+  border-radius:6px;aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  position:relative;box-shadow:0 20px 60px rgba(107,15,26,0.3);
+}
+.about-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%,rgba(200,155,42,0.12),transparent 65%);
+}
+.about-logo-img{width:72%;height:auto;object-fit:contain;position:relative;z-index:1;}
+.about-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));
+  color:var(--maroon-d);padding:1.4rem 1.8rem;border-radius:4px;
+  text-align:center;box-shadow:0 10px 32px rgba(200,155,42,0.35);
+}
+.about-badge-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;display:block;}
+.about-badge-l{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;}
+.about-chip{
+  position:absolute;top:-16px;left:-16px;
+  background:var(--green);color:var(--white);
+  padding:0.8rem 1.2rem;border-radius:4px;
+  font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;
+  box-shadow:0 6px 20px rgba(45,90,39,0.3);
+}
+/* About text — jump on scroll = reveal with translateX */
+
+.about-text .sec-hd{text-align:left;margin-bottom:2rem;}
+.about-text .sec-rule{justify-content:flex-start;}
+.about-body{font-size:0.95rem;color:var(--muted);line-height:1.95;font-weight:300;margin-bottom:1.3rem;}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:1.8rem;}
+.about-feat{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:0.9rem;background:var(--cream2);border-radius:4px;
+  border-left:3px solid var(--maroon);
+}
+.about-feat-ico{font-size:1rem;flex-shrink:0;}
+.about-feat-txt{font-size:0.8rem;color:var(--text);line-height:1.5;}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--cream2);padding:100px 5%;}
+.contact-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;max-width:1000px;margin:0 auto;}
+.c-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid var(--border);}
+.c-item:last-of-type{border-bottom:none;}
+.c-ico{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-l));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;color:var(--gold-ll);
+  box-shadow:0 4px 16px rgba(107,15,26,0.25);
+}
+.c-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--maroon);margin-bottom:4px;}
+.c-val{font-size:0.88rem;color:var(--muted);line-height:1.65;}
+.c-val a{color:var(--maroon);text-decoration:none;font-weight:500;}
+.c-val a:hover{text-decoration:underline;color:var(--green);}
+/* Contact action buttons */
+.contact-actions{display:flex;flex-direction:column;gap:0.8rem;margin-top:1.5rem;}
+.btn-wa{
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  color:var(--white);padding:13px 28px;text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  border-radius:4px;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+  justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.3);
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.45);}
+.btn-call{
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-l));
+  color:var(--gold-ll);padding:13px 28px;text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  border-radius:4px;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+  justify-content:center;box-shadow:0 4px 16px rgba(107,15,26,0.25);
+}
+.btn-call:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(107,15,26,0.4);}
+/* Form */
+.contact-form{
+  background:var(--white);padding:2.5rem;border-radius:6px;
+  border:1px solid var(--border);box-shadow:0 4px 24px rgba(107,15,26,0.06);
+}
+.form-head{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--maroon);margin-bottom:1.5rem;}
+.fgrp{margin-bottom:1.1rem;}
+.fgrp label{display:block;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500;}
+.fgrp input,.fgrp textarea,.fgrp select{
+  width:100%;padding:12px 14px;
+  border:1px solid var(--border);border-radius:3px;
+  font-family:'Jost',sans-serif;font-size:0.88rem;color:var(--text);
+  background:var(--cream);outline:none;transition:border-color 0.3s;
+}
+.fgrp input:focus,.fgrp textarea:focus,.fgrp select:focus{border-color:var(--maroon);}
+.fgrp textarea{height:110px;resize:vertical;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fsub{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-l));
+  color:var(--gold-ll);border:none;border-radius:3px;cursor:pointer;
+  font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;transition:all 0.3s;margin-top:0.5rem;
+}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,15,26,0.3);}
+
+/* ===== WA FLOAT ===== */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.4);
+  transition:all 0.3s;animation:waPulse 2s infinite;
+}
+.wa-float:hover{transform:scale(1.12);animation:none;}
+.wa-float svg{width:30px;height:30px;fill:white;}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.4);}50%{box-shadow:0 6px 44px rgba(37,211,102,0.7);}}
+
+/* ===== FOOTER ===== */
+footer{
+  background:linear-gradient(180deg,var(--maroon-d),#2a0510);
+  color:rgba(253,238,160,0.7);padding:4rem 5% 2rem;
+}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.f-brand{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold-ll);margin-bottom:0.4rem;}
+.f-tag{font-size:0.85rem;color:rgba(253,238,160,0.45);line-height:1.7;margin-bottom:1.5rem;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:0.95rem;}
+.f-soc{display:flex;gap:0.7rem;}
+.f-soc a{width:35px;height:35px;border-radius:50%;border:1px solid rgba(200,155,42,0.25);display:flex;align-items:center;justify-content:center;color:rgba(200,155,42,0.6);text-decoration:none;font-size:0.82rem;transition:all 0.3s;}
+.f-soc a:hover{border-color:var(--gold);color:var(--gold);}
+.f-col h4{font-family:'Playfair Display',serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-ll);margin-bottom:1.2rem;font-weight:700;}
+.f-col ul{list-style:none;}
+.f-col ul li{margin-bottom:0.65rem;}
+.f-col ul li a{color:rgba(253,238,160,0.38);font-size:0.84rem;text-decoration:none;transition:color 0.3s;}
+.f-col ul li a:hover{color:var(--gold-ll);}
+.footer-bottom{border-top:1px solid rgba(200,155,42,0.1);padding-top:1.8rem;display:flex;justify-content:space-between;align-items:center;font-size:0.76rem;color:rgba(200,155,42,0.28);flex-wrap:wrap;gap:1rem;}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px);}to{opacity:1;transform:translateY(0);}}
+/* Reveal variants */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+/* Jump/bounce reveal for about text */
+.reveal-jump{opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.34,1.56,0.64,1);}
+.reveal-jump.visible{opacity:1;transform:translateY(0);}
+/* Left slide reveal */
+.reveal-left{opacity:0;transform:translateX(-35px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-arr{display:none;}
+  .about-inner{grid-template-columns:1fr;gap:3rem;}
+  .about-badge,.about-chip{display:none;}
+  .contact-inner{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .about-feats{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .footer-inner{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- PROMO BANNER -->
+<div class="promo">
+  🌹 Fresh Flower Bouquets &nbsp;|&nbsp; <span>Indoor Plants &amp; Gifts</span> &nbsp;|&nbsp; Event Décor — Nellore, AP 🌸
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <!-- Logo LEFT -->
+  <a href="#home" class="nav-logo">
+    <img src="Royal logo.jpeg" alt="The Royal Flora Logo">
+    <div class="nav-logo-text">The Royal Flora<small>Flowers · Plants · Events</small></div>
+  </a>
+  <!-- Links RIGHT -->
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO SECTION -->
+<section id="home">
+  <!-- Slider -->
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1565695951564-007d8f297e48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHx8MA%3D%3D')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1772127822552-ce9ef537bdcf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEluZGlhbiUyMHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1592150621744-aca64f48394a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kb29yJTIwcGxhbnRzfGVufDB8fDB8fHww')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1745267657011-86c3a3c8b9f3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dmFyaXRlcyUyMG9mJTIwZmxvd2Vyc3xlbnwwfHwwfHx8MA%3D%3D')"></div>
+    <div class="hero-slide" style="background-image:url('https://media.istockphoto.com/id/951513202/photo/best-birthday.webp?a=1&b=1&s=612x612&w=0&k=20&c=m1WMOHx9PUp8NrJNSx5DBMeBpj9ryhAVUyWNxR9luug=')"></div>
+  </div>
+  <!-- Floating petals -->
+  <div id="petals"></div>
+  <!-- Arrows -->
+  <div class="hero-arr prev" onclick="changeSlide(-1)">&#8592;</div>
+  <div class="hero-arr next" onclick="changeSlide(1)">&#8594;</div>
+  <!-- Content -->
+  <div class="hero-content">
+    <div class="hero-badge">🌸 Premium Floral Studio — Nellore</div>
+    <h1 class="hero-title">Where Every <em>Bloom</em><br>Tells a Story</h1>
+    <div class="hero-subtitle-top">Crafted with love, delivered with grace</div>
+    <div class="hero-tagline">
+      <span>Flower Bouquets</span> &nbsp;·&nbsp; Indoor Plants &nbsp;·&nbsp; <span>Event Decor</span> &nbsp;·&nbsp; Gifts &nbsp;·&nbsp; <span>Surprise Events</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#services" class="btn-maroon">Explore Our Services</a>
+      <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="btn-gold-out">Order on WhatsApp</a>
+    </div>
+  </div>
+  <!-- Dots -->
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" onclick="goToSlide(0)"></div>
+    <div class="hero-dot" onclick="goToSlide(1)"></div>
+    <div class="hero-dot" onclick="goToSlide(2)"></div>
+    <div class="hero-dot" onclick="goToSlide(3)"></div>
+    <div class="hero-dot" onclick="goToSlide(4)"></div>
+  </div>
+</section>
+
+
+
+<!-- SERVICES SECTION -->
+<section id="services">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">✦ What We Offer</span>
+    <h2 class="sec-title">Our <em>Services</em></h2>
+    <div class="sec-rule"><div class="sec-rule-line"></div><div class="sec-rule-diamond"></div><div class="sec-rule-line r"></div></div>
+    <p class="sec-desc">From heartfelt bouquets to grand event decorations — we bring nature's beauty into every special moment of your life.</p>
+  </div>
+  <div class="svc-grid">
+
+    <!-- 1. Flower Bouquets -->
+    <div class="svc-card reveal">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1572454591674-2739f30d8c40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHx8MA%3D%3D" alt="Flower Bouquets" class="svc-img">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><span class="svc-icon">💐</span><div class="svc-name">Flower Bouquets</div></div>
+        <p class="svc-desc">Handcrafted fresh flower bouquets for birthdays, anniversaries, weddings and every special occasion — wrapped with love and elegance.</p>
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20am%20interested%20in%20a%20Flower%20Bouquet." target="_blank" class="svc-link">Order Now</a>
+      </div>
+    </div>
+
+    <!-- 2. Indoor Plants -->
+    <div class="svc-card reveal">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&q=80" alt="Indoor Plants" class="svc-img">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><span class="svc-icon">🪴</span><div class="svc-name">Indoor Plants</div></div>
+        <p class="svc-desc">Beautiful indoor plants that bring life and freshness to your home, office or studio — perfect as gifts or home décor.</p>
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20am%20interested%20in%20Indoor%20Plants." target="_blank" class="svc-link">Shop Plants</a>
+      </div>
+    </div>
+
+    <!-- 3. Gifts -->
+    <div class="svc-card reveal">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80" alt="Gifts" class="svc-img">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><span class="svc-icon">🎁</span><div class="svc-name">Gifts</div></div>
+        <p class="svc-desc">Curated floral gift boxes, flower combos, and plant gift sets — thoughtfully arranged to make every gifting moment unforgettable.</p>
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20am%20interested%20in%20Floral%20Gifts." target="_blank" class="svc-link">Explore Gifts</a>
+      </div>
+    </div>
+
+    <!-- 4. Event Decors -->
+    <div class="svc-card reveal">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Event Decorations" class="svc-img">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><span class="svc-icon">🎊</span><div class="svc-name">Event Decorations</div></div>
+        <p class="svc-desc">Stunning floral decorations for weddings, receptions, birthdays and corporate events — transforming every venue into a floral paradise.</p>
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20am%20interested%20in%20Event%20Decorations." target="_blank" class="svc-link">Book Now</a>
+      </div>
+    </div>
+
+    <!-- 5. Surprise Events -->
+    <div class="svc-card reveal">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Surprise Events" class="svc-img">
+      </div>
+      <div class="svc-body">
+        <div class="svc-icon-row"><span class="svc-icon">✨</span><div class="svc-name">Surprise Events</div></div>
+        <p class="svc-desc">Secret floral setups, romantic proposals, surprise birthday rooms — we plan and execute your surprise moments with magical floral arrangements.</p>
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20want%20to%20plan%20a%20Surprise%20Event." target="_blank" class="svc-link">Plan a Surprise</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="about-inner">
+    <!-- Visual / Logo -->
+    <div class="about-vis reveal">
+      <div class="about-card">
+        <img src="trfremove.png" alt="The Royal Flora Logo" class="about-logo-img">
+      </div>
+      <div class="about-badge">
+        <span class="about-badge-n">5★</span>
+        <span class="about-badge-l">Rated by Customers</span>
+      </div>
+      <div class="about-chip">Premium Floral Studio</div>
+    </div>
+    <!-- Text — jump on scroll -->
+    <div class="about-text">
+      <div class="sec-hd">
+        <span class="sec-tag reveal-jump">✦ Our Story</span>
+        <h2 class="sec-title reveal-jump" style="transition-delay:0.1s">About <em>The Royal Flora</em></h2>
+        <div class="sec-rule reveal-jump" style="transition-delay:0.15s"><div class="sec-rule-line"></div><div class="sec-rule-diamond"></div><div class="sec-rule-line r"></div></div>
+      </div>
+      <p class="about-body reveal-jump" style="transition-delay:0.2s">The Royal Flora is Nellore's premium floral studio — born from a deep love for nature's most beautiful creations. We believe every flower carries an emotion, and every arrangement tells a story worth remembering.</p>
+      <p class="about-body reveal-jump" style="transition-delay:0.28s">From fresh morning bouquets to grand wedding decorations, we craft each piece with personal attention and creative passion. Our mission is simple — make every petal count, and make every moment magical.</p>
+      <div class="about-feats">
+        <div class="about-feat reveal-jump" style="transition-delay:0.35s"><span class="about-feat-ico">🌹</span><span class="about-feat-txt">Fresh flowers sourced daily</span></div>
+        <div class="about-feat reveal-jump" style="transition-delay:0.4s"><span class="about-feat-ico">🚚</span><span class="about-feat-txt">Same-day delivery in Nellore</span></div>
+        <div class="about-feat reveal-jump" style="transition-delay:0.45s"><span class="about-feat-ico">🎨</span><span class="about-feat-txt">Custom designs for every occasion</span></div>
+        <div class="about-feat reveal-jump" style="transition-delay:0.5s"><span class="about-feat-ico">💯</span><span class="about-feat-txt">100% customer satisfaction</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="sec-hd reveal">
+    <span class="sec-tag">✦ Reach Out</span>
+    <h2 class="sec-title">Get In <em>Touch</em></h2>
+    <div class="sec-rule"><div class="sec-rule-line"></div><div class="sec-rule-diamond"></div><div class="sec-rule-line r"></div></div>
+    <p class="sec-desc">Order your flowers, plan your event or just say hello — we'd love to hear from you!</p>
+  </div>
+  <div class="contact-inner">
+    <!-- Contact Info -->
+    <div class="reveal">
+      <div class="c-item">
+        <div class="c-ico">📍</div>
+        <div>
+          <div class="c-title">Our Location</div>
+          <div class="c-val">Beside GPR Kalyanamandapam<br>Nellore, Andhra Pradesh</div>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-ico">📱</div>
+        <div>
+          <div class="c-title">Phone / WhatsApp</div>
+          <div class="c-val">
+            <a href="tel:+919100750095">+91 9100750095</a><br>
+            <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20would%20like%20to%20place%20an%20order." target="_blank">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-ico">🕐</div>
+        <div>
+          <div class="c-title">Store Hours</div>
+          <div class="c-val">Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 6:00 PM</div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20would%20like%20to%20place%20an%20order%20or%20know%20more%20about%20your%20services." target="_blank" class="btn-wa">
+          <svg style="width:18px;height:18px;fill:white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="tel:+919100750095" class="btn-call">
+          📞 Call Us: +91 9100750095
+        </a>
+      </div>
+    </div>
+    <!-- Contact Form -->
+    <div class="contact-form reveal">
+      <div class="form-head">Send Us a Message 🌸</div>
+      <div class="frow">
+        <div class="fgrp"><label>Your Name</label><input type="text" placeholder="Full Name" id="fname"></div>
+        <div class="fgrp"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" id="fphone"></div>
+      </div>
+      <div class="fgrp">
+        <label>What are you looking for?</label>
+        <select id="fservice">
+          <option value="">Select a service...</option>
+          <option>Flower Bouquet</option>
+          <option>Indoor Plants</option>
+          <option>Floral Gifts</option>
+          <option>Event Decoration</option>
+          <option>Surprise Event Setup</option>
+          <option>Wedding Decoration</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fgrp"><label>Occasion / Date</label><input type="text" placeholder="e.g. Birthday on Dec 27" id="fdate"></div>
+      <div class="fgrp"><label>Your Message</label><textarea placeholder="Tell us more about what you need..." id="fmsg"></textarea></div>
+      <button class="fsub" onclick="sendWA()">Send via WhatsApp 🌹</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-brand">The Royal Flora</div>
+      <p class="f-tag">"Where every bloom tells a story."<br>Nellore's premium floral studio for bouquets, plants, events &amp; more.</p>
+      <div class="f-soc">
+        <a href="https://wa.me/919100750095" target="_blank">
+          <svg style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="#">📸</a>
+        <a href="#">📘</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#services">Flower Bouquets</a></li>
+        <li><a href="#services">Indoor Plants</a></li>
+        <li><a href="#services">Floral Gifts</a></li>
+        <li><a href="#services">Event Decorations</a></li>
+        <li><a href="#services">Surprise Events</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919100750095">+91 9100750095</a></li>
+        <li><a href="https://wa.me/919100750095" target="_blank">WhatsApp Us</a></li>
+        <li><a href="#contact">Beside GPR Kalyanamandapam</a></li>
+        <li><a href="#contact">Nellore, Andhra Pradesh</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Royal Flora. All rights reserved.</span>
+    <span>Made with 🌹 for flower lovers</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919100750095?text=Hi%20The%20Royal%20Flora!%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="wa-float" target="_blank" title="Order on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+/* ── Mobile menu ── */
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+
+/* ── Nav scroll class ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+/* ── Scroll reveal (all types) ── */
+const allReveals=document.querySelectorAll('.reveal,.reveal-jump,.reveal-left');
+const revObs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      const delay=parseFloat(e.target.style.transitionDelay||0)*1000;
+      setTimeout(()=>e.target.classList.add('visible'),i*80+delay);
+      revObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+allReveals.forEach(el=>revObs.observe(el));
+
+/* ── Hero slider ── */
+let cur=0,timer;
+function goToSlide(n){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dots=document.querySelectorAll('.hero-dot');
+  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');dots[cur].classList.add('active');
+  clearInterval(timer);timer=setInterval(()=>goToSlide(cur+1),5000);
+}
+function changeSlide(d){goToSlide(cur+d);}
+timer=setInterval(()=>goToSlide(cur+1),5000);
+
+/* ── Floating petals ── */
+(function(){
+  const cont=document.getElementById('petals');
+  const petals=['🌸','🌹','🌺','🌼','🪷','🌷'];
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.textContent=petals[Math.floor(Math.random()*petals.length)];
+    p.style.left=Math.random()*100+'%';
+    p.style.fontSize=(Math.random()*0.8+0.7)+'rem';
+    p.style.animationDuration=(Math.random()*10+8)+'s';
+    p.style.animationDelay=(Math.random()*8)+'s';
+    cont.appendChild(p);
+  }
+})();
+
+/* ── WhatsApp form ── */
+function sendWA(){
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  const service=document.getElementById('fservice').value;
+  const date=document.getElementById('fdate').value.trim();
+  const msg=document.getElementById('fmsg').value.trim();
+  if(!name){alert('Please enter your name');return;}
+  let text=`Hi The Royal Flora! 🌸\n\nName: ${name}`;
+  if(phone) text+=`\nPhone: ${phone}`;
+  if(service) text+=`\nLooking for: ${service}`;
+  if(date) text+=`\nOccasion/Date: ${date}`;
+  if(msg) text+=`\n\nMessage: ${msg}`;
+  window.open(`https://wa.me/919100750095?text=${encodeURIComponent(text)}`,'_blank');
+}
+</script>
+</body>
+</html>
